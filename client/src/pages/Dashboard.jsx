@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 import {
   LayoutDashboard,
   UserRound,
@@ -47,7 +49,7 @@ function Dashboard() {
         }
 
         const response = await axios.get(
-          "http://localhost:5000/api/profile",
+          `${API_URL}/profile`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -93,7 +95,7 @@ function Dashboard() {
         }
 
         const response = await axios.get(
-          "http://localhost:5000/api/skills/analyze",
+          `${API_URL}/skills/analyze`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -16,6 +16,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function JobMatching() {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ function JobMatching() {
         const [skillResponse, profileResponse, jobsResponse] =
   await Promise.all([
     axios.get(
-      "http://localhost:5000/api/skills/analyze",
+      `${API_URL}/skills/analyze`,
       {
         params: {
           targetRole: "Full Stack Developer",
@@ -54,7 +55,7 @@ function JobMatching() {
     ),
 
     axios.get(
-      "http://localhost:5000/api/profile",
+      `${API_URL}/profile`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -63,7 +64,7 @@ function JobMatching() {
     ),
 
     axios.get(
-      "http://localhost:5000/api/jobs",
+      `${API_URL}/jobs`,
       {
         params: {
           search: "software developer",

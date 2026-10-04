@@ -14,6 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -97,7 +98,7 @@ const Settings = () => {
     }
 
     await axios.put(
-      "http://localhost:5000/api/profile",
+      `${API_URL}/profile`,
       {
         name: settings.fullName,
       },

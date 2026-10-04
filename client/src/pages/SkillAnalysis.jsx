@@ -19,6 +19,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function SkillAnalysis() {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ function SkillAnalysis() {
       }
 
       const response = await axios.get(
-        "http://localhost:5000/api/skills/analyze",
+        `${API_URL}/skills/analyze`,
         {
           params: {
             targetRole: selectedRole,

@@ -8,6 +8,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Register() {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ function Register() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `${API_URL}/auth/register`,
         {
           name: formData.name,
           email: formData.email,

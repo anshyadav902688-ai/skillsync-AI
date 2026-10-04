@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function ResumeAnalysis() {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ function ResumeAnalysis() {
       formData.append("resume", file);
 
       const response = await axios.post(
-        "http://localhost:5000/api/resume/analyze",
+        `${API_URL}/resume/analyze`,
         formData,
         {
           headers: {

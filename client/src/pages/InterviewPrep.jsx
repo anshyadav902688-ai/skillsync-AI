@@ -15,6 +15,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const QUESTION_BANK = {
   Technical: [
@@ -145,7 +146,7 @@ function InterviewPrep() {
         }
 
         const response = await axios.get(
-          "http://localhost:5000/api/skills/analyze",
+          `${API_URL}/skills/analyze`,
           {
             params: {
               targetRole: "Full Stack Developer",

@@ -8,6 +8,7 @@ import {
   ArrowRight,
   AlertCircle,
 } from "lucide-react";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -29,7 +30,7 @@ function Login() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${API_URL}/auth/login`,
         {
           email: email.trim(),
           password,
@@ -61,9 +62,7 @@ function Login() {
       }
 
       // Redirect after successful login
-      window.location.assign(
-        "http://localhost:5178/dashboard"
-      );
+      window.location.assign("/dashboard");
 
     } catch (err) {
       console.error("LOGIN ERROR:", err);

@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function LearningRoadmap() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function LearningRoadmap() {
         }
 
         const response = await axios.get(
-          "http://localhost:5000/api/skills/analyze",
+          `${API_URL}/skills/analyze`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
