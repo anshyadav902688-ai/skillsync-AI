@@ -54,7 +54,7 @@ fetchProfile();
 
 const fetchProfile = async () => {
 try {
-const response = await axios.get(API_URL, {
+const response = await axios.get(`${API_URL}/profile`, {
 headers: {
 Authorization: `Bearer ${token}`,
 },
@@ -139,9 +139,7 @@ setMessage("");
 
 
 try {
-  const response = await axios.put(
-    API_URL,
-    {
+  const response = await axios.put(`${API_URL}/profile`, {
       name: form.name,
       phone: form.phone,
       university: form.university,
