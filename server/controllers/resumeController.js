@@ -1,5 +1,5 @@
 const fs = require("fs");
-const pdfParse = require("pdf-parse");
+const { PDFParse } = require("pdf-parse");
 const mammoth = require("mammoth");
 
 const analyzeResume = async (req, res) => {
@@ -18,10 +18,20 @@ const analyzeResume = async (req, res) => {
     let resumeText = "";
 
     // PDF
-    if (req.file.mimetype === "application/pdf") {
-      const dataBuffer = fs.readFileSync(filePath);
-      const pdfData = await pdfParse(dataBuffer);
-      resumeText = pdfData.text;
+
+if (req.file.mimetype === "application/pdf") {
+
+  const dataBuffer = fs.readFileSync(filePath);
+
+  const parser = new PDFParse({
+    data: dataBuffer,
+  });
+
+  const pdfData = await parser.getText();
+
+  resumeText = pdfData.text;
+
+  await parser.destroy();
     }
 
     // DOCX
